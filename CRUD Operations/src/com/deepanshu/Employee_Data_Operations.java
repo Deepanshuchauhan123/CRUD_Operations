@@ -12,6 +12,7 @@ public class Employee_Data_Operations
 		{
 		
 			Class.forName("com.mysql.jdbc.Driver");
+			
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank_system","root",null);
 			
 		}catch(Exception e)
@@ -76,8 +77,8 @@ public class Employee_Data_Operations
         int status=0;  
         try
         {  
-            Connection con=Employee_Data_Operations.getConnection();  
-            PreparedStatement ps=con.prepareStatement("delete from bank where ID=?");  
+            Connection con = Employee_Data_Operations.getConnection();  
+            PreparedStatement ps = con.prepareStatement("delete from bank where ID=?");  
           
             ps.setInt(1,id);  
             
@@ -99,8 +100,8 @@ public class Employee_Data_Operations
           
         try
         {  
-            Connection con=Employee_Data_Operations.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905 where ID=?");  
+            Connection con = Employee_Data_Operations.getConnection();  
+            PreparedStatement ps = con.prepareStatement("select * from bank where ID=?");  
             
             ps.setInt(1,id);  
             
@@ -117,6 +118,42 @@ public class Employee_Data_Operations
           
         return e;  
     }
+    
+    public static List<Emp> getAllEmployees()
+    {
+    	List<Emp> list = new ArrayList<Emp>();
+    	
+    	try {
+    		
+    		Connection con = Employee_Data_Operations.getConnection();
+    		
+    		PreparedStatement ps = con.prepareStatement("select * from bank");
+    		
+    		ResultSet rs = ps.executeQuery();
+    		
+    		while(rs.next())
+    		{
+    			Emp e = new Emp();
+    			e.setId(rs.getInt(1));  
+                e.setName(rs.getString(2));  
+                e.setPassword(rs.getString(3));  
+                e.setEmail(rs.getString(4));  
+                e.setCountry(rs.getString(5));  
+                list.add(e);
+    		}
+    		
+    		con.close();
+    		
+    		
+    	}catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	
+    	return list;
+    }
+    
+    
 	
 	
 	
