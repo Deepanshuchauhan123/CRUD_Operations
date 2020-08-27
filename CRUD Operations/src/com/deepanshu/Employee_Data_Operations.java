@@ -54,7 +54,7 @@ public class Employee_Data_Operations
 		
 		try {
 		Connection con = Employee_Data_Operations.getConnection();
-		PreparedStatement ps = con.prepareStatement("update bank Name=?,Password=?,Email=?,Country=? where ID=?");
+		PreparedStatement ps = con.prepareStatement("update bank set Name=?,Password=?,Email=?,Country=? where ID=?");
 		
 		ps.setString(1,e.getName());  
         ps.setString(2,e.getPassword());  

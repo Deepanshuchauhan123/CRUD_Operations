@@ -22,7 +22,7 @@ public class EditServlet2 extends HttpServlet
 		response.setContentType("text/html");  
         PrintWriter out=response.getWriter();
         
-        String sid = request.getParameter("id");
+        String sid = request.getParameter("id");	
         int id = Integer.parseInt(sid);
         
         String name=request.getParameter("name");  
@@ -37,7 +37,7 @@ public class EditServlet2 extends HttpServlet
         e.setEmail(email);  
         e.setCountry(country); 
         
-        int status=Employee_Data_Operations.update(e);  
+        int status = Employee_Data_Operations.update(e);  
         
         if(status > 0)
         {  
