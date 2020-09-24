@@ -1,6 +1,6 @@
 # Servlets
 Servlet Projects
-## This Repository contains multple projects:-
+## This Repository contains multiple projects:-
 # 1. CRUD Operations
 ## Features
 ### A). Add Employee
